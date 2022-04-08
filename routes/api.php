@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::group(['prefix' => 'v1'], function () {
+    Route::resource('/comments', 'API\CommentController', ['only' => ["index", "show", "store"]]);
+});
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
